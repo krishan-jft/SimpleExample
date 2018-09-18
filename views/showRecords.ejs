@@ -1,0 +1,97 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#mytable #checkall").click(function () {
+      if ($("#mytable #checkall").is(':checked')) {
+        $("#mytable input[type=checkbox]").each(function () {
+          $(this).prop("checked", true);
+        });
+
+      } else {
+        $("#mytable input[type=checkbox]").each(function () {
+          $(this).prop("checked", false);
+        });
+      }
+    });
+
+    $("[data-toggle=tooltip]").tooltip();
+  });
+
+
+</script>
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <h2 style="text-align: center ; color: chocolate">List of Employees in your Database</h2>
+      <div>
+        <form action=" /addRecord" method="post">
+        <button value="Add">Add</button>
+        </form>
+      </div>
+      <div class="table-responsive">
+        <div>
+          <% let message = req.flash('message') %>
+<!--
+          <p><%=message%></p>
+-->
+        </div>
+
+        <table id="mytable" class="table table-bordred table-striped">
+
+          <thead>
+          <th>Serial No </th>
+          <th>Emplyee Name</th>
+          <th>Employee Id</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Update</th>
+          <th>Delete</th>
+          </thead>
+          <tbody>
+
+
+
+
+          <% for(let i=0;i < data.length ;i++){%>
+
+            <tr>
+              <td><%=i+1%></td>
+            <td><%=data[i].name%></td>
+            <td><%=data[i].empId%></td>
+            <td><%=data[i].email%></td>
+            <td><%=data[i].contact%></td>
+            <td>
+                <a href="/update/<%=data[i].id%>" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+              </td>
+            <td><form action=" /delete/<%=data[i].id%>" method="POST">
+              <p data-placement="top" data-toggle="tooltip" title="Delete">
+                <button class="btn btn-danger btn-xs" data-title="Delete">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </p>
+              </form>
+            </td>
+            </tr>
+
+            <% } %>
+          </tbody>
+        </table>
+
+    </div>
+
+  </div>
+</div>
+
+

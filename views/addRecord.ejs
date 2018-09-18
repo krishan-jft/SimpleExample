@@ -1,0 +1,57 @@
+
+<h1 style="color: blue;background: yellow">Please Enter Recorde</h1>
+<div class="container" style="background: #0c8da0">
+  <div class="row">
+    <form role="form" action="/add" method="POST" onsubmit="submitHandler()">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label>Enter Employee Id</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="empId" placeholder="Enter Employee Id" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Enter Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Enter Email</label>
+          <div class="input-group">
+            <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label >Password</label>
+          <div class="input-group">
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label >Contact</label>
+          <div class="input-group">
+            <input type="tel" class="form-control"  name="contact" placeholder="Enter Contact Number" required>
+          </div>
+        </div>
+
+        <input type="submit" name="submit" value="Save" class="btn btn-info pull-right" style="background: green">
+        <input type="reset" name="submit" value="Rest" class="btn btn-info pull-right" style="background: aqua">
+      <input type="button" onClick="history.back()" value="Back">
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<script>
+  function submitHandler(e){
+    let cnf = confirm("Are sure want to Summit Data ");
+    if(!cnf){
+      e.preventDefault();
+    }
+  }
+
+</script>
